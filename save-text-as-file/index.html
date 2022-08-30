@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=7,8,edge" />-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save Text As File - Hataken Project</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js" type="text/javascript" defer></script>
+  </head>
+  <body>
+    
+    <div class="wrapper">
+      <h3 class="title">Save Text As File</h3>
+      <textarea name="input" id="input" placeholder="Enter Your Text To Save" required></textarea>
+      <div class="file-options">
+        <div class="option file-name">
+          <label for="file-name">File Name</label>
+          <input type="text" name="file-name" id="file-name" placeholder="Enter file name" required/>
+        </div>
+        <div class="option save-as">
+          <label for="save-as">Save As</label>
+            <div class="select-menu">
+              <select>
+                <option value="text/plain">Text File (.txt)</option>
+                <option value="application/json">JSON File (.json)</option>
+                <option value="text/javascript">JavaScript File (.js)</option>
+                <option value="text/html">HTML File (.html)</option>
+                <option value="text/css">CSS File (.css)</option>
+                <option value="image/svg+xml">SVG File (.svg)</option>
+                <option value="application/msword">DOC File (.doc)</option>
+                <option value="application/vnd.ms-powerpoint">PPT File (.ppt)</option>
+              </select>
+            </div>
+        </div>
+      </div>
+      <button class="save-btn">Save As Text File</button>
+      <div class="footer">
+        Hataken Project • Tutorial From <a href="https://youtu.be/fAgLnRVHp_I" target="_blank">Coding Nepal</a>
+      </div>
+    </div>
+    
+  </body>
+</html>
