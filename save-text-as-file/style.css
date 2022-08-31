@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Consolas', Sans-Serif;
+  font-family: 'Inconsolata', Sans-Serif;
 }
 
 body {
@@ -69,13 +71,27 @@ body {
   opacity: .6;
   margin-top: 20px;
   padding: 16px 0;
-  cursor: pointer;
+  cursor: block;
   background-color: cornflowerblue;
   pointer-events: none;
 }
 
+/*
+Dapat menggunakan validasi dibawah ini apabila yang perlu diisi hanya textarea saja.
+
+Dan dalam kasus saya, saya ingin memvalidasi nama filenya juga agar nanti kalau input kosong namanya tidak tergenerate random oleh si blob dan button tidak bisa diklik sampai input ada isinya juga, jadi validasinya menggunakan javascript seperti di file script.js
+
 .wrapper textarea:valid ~ .save-btn {
   opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+*/
+
+/* Jika hanya memvalidasi textarea saja, hapus class dibawah ini. */
+.valid1.valid2 {
+  opacity: 1;
+  cursor: pointer;
   pointer-events: auto;
 }
 
@@ -90,5 +106,5 @@ a:link {
   text-align: center;
   font-family: Monospace;
   font-size: .8em;
-  color: #ccc;
+  color: #aaa;
 }
