@@ -3,6 +3,28 @@ fileNameInput = document.querySelector(".file-name input"),
 selectMenu = document.querySelector(".save-as select"),
 saveBtn = document.querySelector(".save-btn");
 
+textarea.addEventListener("keyup", () => {
+  //textareaValid = true;
+  if (textarea.value) {
+  saveBtn.classList.add("valid1");
+  } else {
+  saveBtn.classList.remove("valid1");
+  }
+});
+
+fileNameInput.addEventListener("keyup", () => {
+  //fileNameInputValid = true;
+if (fileNameInput.value) {
+  saveBtn.classList.add("valid2");
+  } else {
+  saveBtn.classList.remove("valid2");
+  }
+});
+
+/*if (textarea.value && fileNameInput.value) {
+  saveBtn.classList.add("valid");
+}*/
+
 selectMenu.addEventListener("change", () => {
   let selectedOption = selectMenu.options[selectMenu.selectedIndex].text;
   saveBtn.innerText = `Save As ${selectedOption.split(" ")[0]} File`;
