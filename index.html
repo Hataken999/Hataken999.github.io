@@ -5,50 +5,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
   <script src="js/index.js"></script>
-  <title>Online Web Tools - Hataken Project</title>
+  <title>Online Web Tools Project - Hataken Project</title>
 </head>
 <body>
   <header>
-	<h1>Online Web Tools Project</h1>
-    <p>Hai, saya Hataken. Ini adalah sebuah project Online Web Tools yang saya buat untuk belajar javascript.</p>
+    <h1 data-text="&nbsp; × Online Web Tools Project × &nbsp;
+      ">&nbsp; × Online Web Tools Project × &nbsp;</h1>
+    <p>
+      Hai, saya <a href="https://instagram.com/hatakenpro999"target="_blank">Hataken</a>. Ini adalah sebuah halaman utama dari project Online Web Tools yang saya buat untuk belajar web development, terutama javascript. Project ini tersedia di <a href="https://github.com/Hataken999" target="_blank">github</a> saya apabila kamu ingin belajar untuk membuatnya. Silahkan eksplorasi projectnya (｡•̀ᴗ-)✧.
+    </p>
   </header>
-	<details>
-	  <summary>
-	    Daftar tools yang sudah direncanakan
-	  </summary>
-	  
-	  <p>Yang sudah ada ditandai dengan <code>[✓]</code>.</p>
-	  <ul id="daftarTools">
-	    <li>File Downloader</li>
-	    <li>IMG to PDF</li>
-	    <li><a href="/palindrome-checker/index.html">Palindrome Checker</a> <code>[✓]</code></li>
-	    <li>QR Code Generator</li>
-	    <li>QR Code Reader</li>
-	    <li><a href="/save-text-as-file/index.html">Save Text as File</a> <code>[✓]</code></li>
-	    <li>Simple Image Editor</li>
-	    <li>Split IMG</li>
-	    <li>Text to PDF</li>
-	  </ul>
-	</details>
-	<div class="main-wrapper">
-	  <section class="about-me">
-	    <h3>Siapa Saya</h3>
-	    <p>Description...</p>
-	  </section>
-	  
-	  <section class="content">
-	    DAFTAR PROJECT YANG SUDAH JADI
-	  </section>
-	  
-	  <section class="skills">
-	    Section progres Kemampuan disini
-	  </section>
-	</div>
-	
-	<footer>
-	  footer disini
-	</footer>
-	
+  <div class="main-wrapper">
+
+    <div class="info-wrapper">
+      <details>
+        <summary>
+          &nbsp;&nbsp;Daftar tools yang sudah direncanakan
+        </summary>
+
+        <p>
+          Yang sudah ada ditandai dengan <code>[✓]</code>.
+        </p>
+        <ul id="daftarTools">
+          <li>File Downloader</li>
+          <li>IMG to PDF</li>
+          <li>Palindrome Checker <code>[✓]</code></li>
+          <li>QR Code Generator</li>
+          <li>QR Code Reader</li>
+          <li>Save Text as File <code>[✓]</code></li>
+          <li>Simple Image Editor</li>
+          <li>Split IMG</li>
+          <li>Text to PDF</li>
+        </ul>
+      </details>
+
+      <section class="about-me">
+        <h3>Siapa Saya</h3>
+        <p>
+          Description...
+        </p>
+      </section>
+
+    </div>
+
+    <section class="content">
+      <h3>PROJECTS</h3>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-title">
+                <h3>Palindrome Checker</h3>
+              </div>
+
+              <div class="card-content">
+                <p>
+                  Palindrom adalah sebuah kata, angka, frasa ataupun susunan lainnya (misalnya: kalimat) yang mana bacaannya sama jika dibaca dari depan ataupun belakang.
+                </p>
+                <a href="palindrome-checker/index.html">Kunjungi</a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-title">
+                <h3>Save Text As File</h3>
+              </div>
+
+              <div class="card-content">
+                <p>
+                  Save Text as File adalah tool untuk menyimpan text yang diinput menjadi file dengan format yang dipilih ( .txt, .json. .js, .html, .css, .svg, .doc, dan .ppt ).
+                </p>
+                <a href="text-to-file/index.html">Kunjungi</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <section class="skills">
+      Section progres Kemampuan disini
+    </section>
+  </div>
+
+  <footer>
+    footer disini
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 200,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+
 </body>
 </html>
