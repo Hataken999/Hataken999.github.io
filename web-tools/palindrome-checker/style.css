@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Verdana", Sans-Serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: crimson;
+}
+
+.wrapper {
+  width: min(100% - 3em, 450px);
+  padding: 20px 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px black;
+}
+
+header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+header h3 {
+  margin-bottom: 10px;
+}
+
+.inputs input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 15px 8px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+}
+
+.inputs button {
+  width: 100%;
+  opacity: .6;
+  padding: 15px 6px;
+  background-color: crimson;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  cursor: block;
+  pointer-events: none;
+  transition: 500ms ease-in-out;
+}
+
+.inputs button.active {
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.inputs button:hover {
+  background-color: #b31333;
+}
+
+.hasil {
+  display: none;
+  width: 100%;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.hasil h3 {
+  margin-bottom: 10px;
+}
+
+.hasil.benar {
+  display: block;
+  color: green;
+  padding: 20px 10px;
+  background-color: #e0ffc1;
+  border-radius: 7px;
+}
+
+.hasil.salah {
+  display: block;
+  color: red;
+  padding: 20px 10px;
+  background-color: #ffc1c1;
+  border-radius: 7px;
+}
+
+footer {
+  margin: 15px 0;
+  text-align: center;
+  font-family: Monospace;
+  font-size: .8em;
+  color: #aaa;
+}
+
+span {
+  font-size: 2.3em;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+span a:link {
+  color: #999;
+}
+
+span a:visited {
+  color: #999;
+}
+
+.project-link:link {
+  color: crimson;
+  opacity: 1;
+}
+
+.project-link:hover {
+  color: #9f122e;
+}
+
+.project-link:visited {
+  color: crimson;
+}
+
+a:link {
+  color: #aaa;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
