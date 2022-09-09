@@ -30,7 +30,9 @@ videoUrl.addEventListener("keyup", () => {
   }
 })
 
-grabBtn.addEventListener("click", () => {
+grabBtn.addEventListener("click", e => {
+e.preventDefault();
+
   if (!online) {
     alert("Kamu sedang offline, tunggu sampai online lagi untuk menggunakan tools ini.");
     return;
@@ -62,7 +64,8 @@ grabBtn.addEventListener("click", () => {
   }
 })
 
-downloadBtn.addEventListener("click", () => {
+downloadBtn.addEventListener("click", e => {
+e.preventDefault();
 
 const headers = new Headers();
 headers.append('Content-Type', 'image/jpg');
