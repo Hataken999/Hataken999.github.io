@@ -49,7 +49,7 @@ grabBtn.addEventListener("click", () => {
   }
   const thumbImg = document.getElementById("thumb-img");
   
-  //thumbImg.crossOrigin = "anonymous";
+  thumbImg.crossOrigin = "anonymous";
 
   if (videoId) {
     thumbnailUrl = thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
@@ -66,23 +66,20 @@ grabBtn.addEventListener("click", () => {
 
 downloadBtn.addEventListener("click", () => {
 
-const headers = {
-  'Content-Type': 'image/jpg',
-  'Accept': 'image/jpg',
-  'Access-Control-Allow-Origin': '*',
-};
-/*headers.append('content-type', 'image/jpg');
+const headers = new Headers();
+headers.append('content-type', 'image/jpg');
 headers.set('Accept', 'image/jpg');
 headers.set('Access-Control-Allow-Origin', 'https://img.youtube.com');
-headers.append('Access-Control-Allow-Origin', '*');*/
+headers.append('Access-Control-Allow-Origin', '*');
 
 const thumbInit = {
   headers: headers,
+  mode: 'no-cors',
 }
 
   const thumbRequest = new Request(thumbnailUrl);
 
-  fetch(thumbRequest, { headers })
+  fetch(thumbRequest,thumbInit)
   .then((response) => {
       
       console.log(response.headers())
