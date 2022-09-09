@@ -68,6 +68,7 @@ const headers = new Headers();
 headers.append('content-type', 'image/jpg');
 headers.set('Accept', 'image/jpg');
 headers.set('Access-Control-Allow-Origin', 'https://img.youtube.com');
+headers.append('Access-Control-Allow-Origin', '*');
 
 const thumbInit = {
   headers: headers,
