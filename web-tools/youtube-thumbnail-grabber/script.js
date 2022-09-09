@@ -87,7 +87,6 @@ headers.set('Origin', 'https://img.youtube.com');*/
 
   let cors = corsProxy + thumbnailUrl
   const thumbRequest = new Request(cors);
-  
 
   fetch(thumbRequest)
   .then((response) => response.blob())
@@ -105,7 +104,9 @@ headers.set('Origin', 'https://img.youtube.com');*/
       link.click();
       URL.revokeObjectURL(objectURL);
       link.remove();
-    });
+    }).catch( e => {
+alert(e);
+});
 
 })
 
