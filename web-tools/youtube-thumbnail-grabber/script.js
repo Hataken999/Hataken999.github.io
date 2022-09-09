@@ -80,7 +80,7 @@ const thumbInit = {
 
   const thumbRequest = new Request(thumbnailUrl);
 
-  fetch(thumbRequest,thumbInit)
+  fetch(thumbRequest)
   .then((response) => response.blob())
     .then((myBlob) => {
       const objectURL = URL.createObjectURL(myBlob),
