@@ -66,11 +66,15 @@ grabBtn.addEventListener("click", () => {
 
 downloadBtn.addEventListener("click", () => {
 
-const headers = new Headers();
-headers.append('content-type', 'image/jpg');
+const headers = {
+  'Content-Type': 'image/jpg',
+  'Accept': 'image/jpg',
+  'Access-Control-Allow-Origin': '*',
+};
+/*headers.append('content-type', 'image/jpg');
 headers.set('Accept', 'image/jpg');
 headers.set('Access-Control-Allow-Origin', 'https://img.youtube.com');
-headers.append('Access-Control-Allow-Origin', '*');
+headers.append('Access-Control-Allow-Origin', '*');*/
 
 const thumbInit = {
   headers: headers,
@@ -78,7 +82,7 @@ const thumbInit = {
 
   const thumbRequest = new Request(thumbnailUrl);
 
-  fetch(thumbRequest,thumbInit)
+  fetch(thumbRequest, { headers })
   .then((response) => {
       
       console.log(response.headers())
