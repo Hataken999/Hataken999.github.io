@@ -7,7 +7,11 @@ preview = document.querySelector(".preview");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
 let online = navigator.onLine;
-  const corsProxy = "https://test.cors.workers.dev/?";
+ const corsProxy = "https://test.cors.workers.dev/?";
+
+online.addEventListener("change", () => {
+  connection();
+});
 
 videoUrl.addEventListener("focus", () => {
   if (videoUrl.value) {
@@ -56,6 +60,9 @@ e.preventDefault();
     thumbnailUrl =  thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
     thumbImg.src = thumbnailUrl;
     grabBtn.innerText = "Grabbing Thumbnail...";
+    grabBtn.style.opacity = 0.6;
+    grabBtn.style.cursor = "block";
+    grabBtn.style.pointerEvents = "none";
     thumbImg.addEventListener("load", () => {
       grabBtn.innerText = "Grab";
       preview.classList.add("show");
@@ -105,7 +112,7 @@ headers.set('Origin', 'https://img.youtube.com');*/
       URL.revokeObjectURL(objectURL);
       link.remove();
     }).catch( e => {
-alert(e);
+alert(e + "<br>Download masih diblock oleh <b><i>CORS Policy</i></b>, coba dengan klik kanan gambar atau sentuh tahan gambar lalu simpan gambar secara manual.");
 });
 
 })
