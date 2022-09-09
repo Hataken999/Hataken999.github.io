@@ -70,8 +70,7 @@ e.preventDefault();
 const headers = new Headers();
 headers.append('Content-Type', 'image/jpg');
 headers.set('Accept', 'image/jpg');
-headers.set('Access-Control-Allow-Origin', 'https://img.youtube.com');
-headers.append('Access-Control-Allow-Origin', '*')
+headers.set('Origin', 'https://img.youtube.com');
 
 const thumbInit = {
   headers: headers,
@@ -80,7 +79,7 @@ const thumbInit = {
 
   const thumbRequest = new Request(thumbnailUrl);
 
-  fetch(thumbRequest)
+  fetch(thumbRequest,thumbInit)
   .then((response) => response.blob())
     .then((myBlob) => {
       const objectURL = URL.createObjectURL(myBlob),
