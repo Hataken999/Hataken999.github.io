@@ -93,6 +93,7 @@ const thumbInit = {
       } else {
         link.download = `${thumbResolution.value} - Hataken Project`;
       }
+      document.body.appendChild(link);
       link.click();
       URL.revokeObjectURL(objectURL);
       link.remove();
