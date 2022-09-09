@@ -67,21 +67,25 @@ downloadBtn.addEventListener("click", () => {
   const myRequest = new Request(thumbnailUrl);
 
   fetch(myRequest)
-  .then((response) => response.blob())
-  .then((myBlob) => {
-    const objectURL = URL.createObjectURL(myBlob),
-    link = document.createElement("a");
-    link.href = objectURL;
-
-    if (thumbName.value) {
-      link.download = `${thumbName.value} - Hataken Project`;
-    } else {
-      link.download = `${thumbResolution.value} - Hataken Project`;
-    }
-    link.click();
-    URL.revokeObjectURL(objectURL);
-    link.remove();
-  });
+  .then((response) => {
+      
+      console.log(...response.headers)
+    response.blob()
+    .then((myBlob) => {
+      const objectURL = URL.createObjectURL(myBlob),
+      link = document.createElement("a");
+      link.href = objectURL;
+  
+      if (thumbName.value) {
+        link.download = `${thumbName.value} - Hataken Project`;
+      } else {
+        link.download = `${thumbResolution.value} - Hataken Project`;
+      }
+      link.click();
+      URL.revokeObjectURL(objectURL);
+      link.remove();
+    });
+  })
 
 })
 
