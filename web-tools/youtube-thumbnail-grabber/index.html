@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=7,8,edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youtube Thumbnail Grabber - Hataken Project</title>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="script.js" type="text/javascript" defer></script>
+</head>
+<body onload="connection();">
+
+  <div class="wrapper">
+    <h3 class="title">Youtube Thumbnail Grabber</h3>
+    <p>Masukkan URL youtube video/music/shorts yang ingin didownload thumbnailnya.</p>
+    <input type="url" placeholder="Enter Youtube video URL here" required>
+    <div class="file-options">
+      <div class="option thumb-name">
+        <label for="thumb-name">File Name</label>
+        <input type="text" name="thumb-name" placeholder="Enter file name" required />
+      </div>
+      <div class="option resolution">
+        <label for="resolution">Resolution</label>
+        <div class="select-menu">
+          <select name="resolution">
+            <option value="maxresdefault">Full HD</option>
+            <option value="hqdefault">Medium</option>
+            <option value="mqdefault">Small</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button class="grab-btn">Grab</button>
+    <div class="preview">
+      <h3>Preview</h3>
+        <div class="thumb-img">
+          <img id="thumb-img" src="moona_gekkou_cover.jpg" alt="Preview Thumbnail" oncontextmenu="return false;" onerror="imgError();">
+        </div>
+        <button class="download-btn">Download Thumbnail</button>
+      </div>
+    <div class="footer">
+      <a class="project-link" href="github.com/Hataken999" target="_blank">Hataken Project</a> • Made with &hearts;
+    </div>
+  </div>
+
+</body>
+</html>
