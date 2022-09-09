@@ -52,7 +52,7 @@ e.preventDefault();
   const thumbImg = document.getElementById("thumb-img");
 
   if (videoId) {
-    thumbnailUrl = thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
+    thumbnailUrl = "https://test.cors.workers.dev/" + thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
     thumbImg.src = thumbnailUrl;
     grabBtn.innerText = "Grabbing Thumbnail...";
     thumbImg.addEventListener("load", () => {
@@ -75,18 +75,18 @@ e.preventDefault();
 headers.set('Accept', 'image/jpg');
 headers.set('Origin', 'https://img.youtube.com');*/
 
-const thumbInit = {
+/*const thumbInit = {
   method: 'GET',
   headers: {
   'Origin': 'https://img.youtube.com',
   'Content-Type': 'image/jpg',
     
   },
-}
+}*/
 
   const thumbRequest = new Request(thumbnailUrl);
 
-  fetch(thumbRequest,thumbInit)
+  fetch(thumbRequest)
   .then((response) => response.blob())
     .then((myBlob) => {
       const objectURL = URL.createObjectURL(myBlob),
