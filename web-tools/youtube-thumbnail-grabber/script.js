@@ -81,8 +81,8 @@ const thumbInit = {
   .then((response) => response.blob())
     .then((myBlob) => {
       const objectURL = URL.createObjectURL(myBlob),
-      console.log(myBlob.type);
       link = document.createElement("a");
+      console.log(myBlob.type);
       link.href = objectURL;
   
       if (thumbName.value) {
