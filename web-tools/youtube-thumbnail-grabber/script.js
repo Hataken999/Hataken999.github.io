@@ -44,7 +44,7 @@ e.preventDefault();
     videoId = videoUrl.value.split(/[=&]+/)[1];
   } else if(videoUrl.value.includes("youtube.com")) {
     videoId = videoUrl.value.split(/[/?]/)[4];
-    console.log(videoId);
+    //console.log(videoId);
   } else {
     imgError();
     return;
@@ -67,10 +67,13 @@ e.preventDefault();
 downloadBtn.addEventListener("click", e => {
 e.preventDefault();
 
-const headers = new Headers();
-headers.append('Content-Type', 'image/jpg');
+const headers = headers = {
+  'Origin': 'https://img.youtube.com',
+  'Content-Type': 'image/jpg',
+}
+/*headers.append('Content-Type', 'image/jpg');
 headers.set('Accept', 'image/jpg');
-headers.set('Origin', 'https://img.youtube.com');
+headers.set('Origin', 'https://img.youtube.com');*/
 
 const thumbInit = {
   headers: headers,
@@ -83,7 +86,6 @@ const thumbInit = {
     .then((myBlob) => {
       const objectURL = URL.createObjectURL(myBlob),
       link = document.createElement("a");
-      console.log(myBlob);
       link.href = objectURL;
   
       if (thumbName.value) {
