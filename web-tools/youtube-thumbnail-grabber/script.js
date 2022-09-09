@@ -7,11 +7,7 @@ preview = document.querySelector(".preview");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
 let online = navigator.onLine;
- const corsProxy = "https://test.cors.workers.dev/?";
-
-online.addEventListener("change", () => {
-  connection();
-});
+const corsProxy = "https://test.cors.workers.dev/?";
 
 videoUrl.addEventListener("focus", () => {
   if (videoUrl.value) {
@@ -60,9 +56,6 @@ e.preventDefault();
     thumbnailUrl =  thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
     thumbImg.src = thumbnailUrl;
     grabBtn.innerText = "Grabbing Thumbnail...";
-    grabBtn.style.opacity = 0.6;
-    grabBtn.style.cursor = "block";
-    grabBtn.style.pointerEvents = "none";
     thumbImg.addEventListener("load", () => {
       grabBtn.innerText = "Grab";
       preview.classList.add("show");
@@ -127,3 +120,7 @@ function connection() {
     return;
   }
 }
+
+online.addEventListener("change", () => {
+  connection();
+});
