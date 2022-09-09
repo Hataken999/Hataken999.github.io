@@ -49,7 +49,7 @@ grabBtn.addEventListener("click", () => {
   }
   const thumbImg = document.getElementById("thumb-img");
   
-  thumbImg.crossOrigin = "anonymous";
+  //thumbImg.crossOrigin = "anonymous";
 
   if (videoId) {
     thumbnailUrl = thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
