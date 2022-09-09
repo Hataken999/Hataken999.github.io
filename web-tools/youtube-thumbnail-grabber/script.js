@@ -7,6 +7,7 @@ preview = document.querySelector(".preview");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
 let online = navigator.onLine;
+  const corsProxy = "https://test.cors.workers.dev/?";
 
 videoUrl.addEventListener("focus", () => {
   if (videoUrl.value) {
@@ -52,7 +53,7 @@ e.preventDefault();
   const thumbImg = document.getElementById("thumb-img");
 
   if (videoId) {
-    thumbnailUrl = "https://test.cors.workers.dev/?" + thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
+    thumbnailUrl =  thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
     thumbImg.src = thumbnailUrl;
     grabBtn.innerText = "Grabbing Thumbnail...";
     thumbImg.addEventListener("load", () => {
@@ -84,7 +85,9 @@ headers.set('Origin', 'https://img.youtube.com');*/
   },
 }*/
 
-  const thumbRequest = new Request(thumbnailUrl);
+  let cors = corsProxy + thumbnailUrl
+  const thumbRequest = new Request(cors);
+  
 
   fetch(thumbRequest)
   .then((response) => response.blob())
