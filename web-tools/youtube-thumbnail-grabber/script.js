@@ -48,6 +48,8 @@ grabBtn.addEventListener("click", () => {
     return;
   }
   const thumbImg = document.getElementById("thumb-img");
+  
+  thumbImg.crossOrigin = "anonymous";
 
   if (videoId) {
     thumbnailUrl = thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
