@@ -67,16 +67,21 @@ e.preventDefault();
 downloadBtn.addEventListener("click", e => {
 e.preventDefault();
 
-const headers = headers = {
+/*const headers = headers = {
   'Origin': 'https://img.youtube.com',
   'Content-Type': 'image/jpg',
-}
+}*/
 /*headers.append('Content-Type', 'image/jpg');
 headers.set('Accept', 'image/jpg');
 headers.set('Origin', 'https://img.youtube.com');*/
 
 const thumbInit = {
-  headers: headers,
+  method: 'GET',
+  headers: {
+  'Origin': 'https://img.youtube.com',
+  'Content-Type': 'image/jpg',
+    
+  },
 }
 
   const thumbRequest = new Request(thumbnailUrl);
