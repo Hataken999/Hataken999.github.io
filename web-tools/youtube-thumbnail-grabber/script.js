@@ -78,10 +78,7 @@ const thumbInit = {
   const thumbRequest = new Request(thumbnailUrl);
 
   fetch(thumbRequest,thumbInit)
-  .then((response) => {
-      
-      console.log(...response.headers)
-    response.blob()
+  .then((response) => response.blob())
     .then((myBlob) => {
       const objectURL = URL.createObjectURL(myBlob),
       link = document.createElement("a");
@@ -96,7 +93,6 @@ const thumbInit = {
       URL.revokeObjectURL(objectURL);
       link.remove();
     });
-  })
 
 })
 
