@@ -74,7 +74,6 @@ headers.set('Origin', 'https://img.youtube.com');
 
 const thumbInit = {
   headers: headers,
-  mode: 'no-cors',
 }
 
   const thumbRequest = new Request(thumbnailUrl);
