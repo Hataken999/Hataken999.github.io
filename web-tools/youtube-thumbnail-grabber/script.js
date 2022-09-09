@@ -48,8 +48,6 @@ grabBtn.addEventListener("click", () => {
     return;
   }
   const thumbImg = document.getElementById("thumb-img");
-  
-  thumbImg.crossOrigin = "anonymous";
 
   if (videoId) {
     thumbnailUrl = thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
@@ -70,7 +68,7 @@ const headers = new Headers();
 headers.append('content-type', 'image/jpg');
 headers.set('Accept', 'image/jpg');
 headers.set('Access-Control-Allow-Origin', 'https://img.youtube.com');
-headers.append('Access-Control-Allow-Origin', '*');
+headers.append('Access-Control-Allow-Origin', '*')
 
 const thumbInit = {
   headers: headers,
@@ -82,7 +80,7 @@ const thumbInit = {
   fetch(thumbRequest,thumbInit)
   .then((response) => {
       
-      console.log(response.headers())
+      console.log(...response.headers)
     response.blob()
     .then((myBlob) => {
       const objectURL = URL.createObjectURL(myBlob),
