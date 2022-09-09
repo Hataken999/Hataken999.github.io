@@ -52,7 +52,7 @@ e.preventDefault();
   const thumbImg = document.getElementById("thumb-img");
 
   if (videoId) {
-    thumbnailUrl = "https://test.cors.workers.dev/" + thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
+    thumbnailUrl = "https://test.cors.workers.dev/?" + thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
     thumbImg.src = thumbnailUrl;
     grabBtn.innerText = "Grabbing Thumbnail...";
     thumbImg.addEventListener("load", () => {
