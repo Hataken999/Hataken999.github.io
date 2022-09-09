@@ -81,7 +81,7 @@ const thumbInit = {
   fetch(thumbRequest,thumbInit)
   .then((response) => {
       
-      console.log(...response.headers)
+      console.log(response.headers())
     response.blob()
     .then((myBlob) => {
       const objectURL = URL.createObjectURL(myBlob),
