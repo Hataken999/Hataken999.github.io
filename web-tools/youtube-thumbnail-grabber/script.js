@@ -65,7 +65,7 @@ grabBtn.addEventListener("click", () => {
 downloadBtn.addEventListener("click", () => {
 
 const headers = new Headers();
-headers.append('content-type', 'image/jpg');
+headers.append('Content-Type', 'image/jpg');
 headers.set('Accept', 'image/jpg');
 headers.set('Access-Control-Allow-Origin', 'https://img.youtube.com');
 headers.append('Access-Control-Allow-Origin', '*')
