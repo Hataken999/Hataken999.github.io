@@ -64,9 +64,18 @@ grabBtn.addEventListener("click", () => {
 
 downloadBtn.addEventListener("click", () => {
 
-  const myRequest = new Request(thumbnailUrl);
+const headers = new Headers();
+headers.append('content-type', 'image/jpg');
+headers.set('Accept', 'image/jpg');
+headers.set('Access-Control-Allow-Origin', 'image/jpg');
 
-  fetch(myRequest)
+const thumbInit = {
+  headers: headers,
+}
+
+  const thumbRequest = new Request(thumbnailUrl);
+
+  fetch(thumbRequest,thumbInit)
   .then((response) => {
       
       console.log(...response.headers)
