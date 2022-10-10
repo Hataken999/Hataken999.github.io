@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Sans-Serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1bbc00;
+  accent-color: #1bbc00;
+}
+.container {
+  background-color: #fff;
+  width: min(100vw - 50px, 450px);
+  border-radius: 8px;
+  box-shadow: 8px 8px 1px black;
+}
+.container > h2 {
+  font-weight: 600;
+  padding: 1rem 1.75rem;
+  border-bottom: 1px solid #ccc;
+}
+.wrapper {
+  margin: 1.25rem 1.75rem;
+}
+.wrapper .input-box {
+  position: relative;
+}
+.input-box input {
+  width: 100%;
+  height: 50px;
+  color: black;
+  background: none;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1.4px;
+  padding: 0 2.56rem 0 1rem;
+}
+.input-box span {
+  position: absolute;
+  right: 13px;
+  line-height: 50px;
+  cursor: pointer;
+  color: #707070;
+}
+.wrapper .pass-indicator {
+  width: 100%;
+  height: 4px;
+  position: relative;
+  background-color: #dfdfdf;
+  margin-top: 0.55rem;
+  border-radius: 25px;
+}
+.pass-indicator::before {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 50%;
+  border-radius: inherit;
+  transition: width .3s ease;
+}
+.pass-indicator#weak::before {
+  width: 20%;
+  background-color: #ff0000;
+}
+.pass-indicator#medium::before {
+  width: 50%;
+  background-color: #f1ed0b;
+}
+.pass-indicator#strong::before {
+  width: 100%;
+  background-color: #1bbc00;
+}
+.wrapper .pass-length {
+ margin: 1.56rem 0 1.25rem;
+}
+.pass-length .details {
+  display: flex;
+  justify-content: space-between;
+}
+.pass-length input {
+  width: 100%;
+  height: 5px;
+}
+.wrapper .pass-settings {
+  margin: 1.25rem 0;
+}
+.pass-settings .options {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.pass-settings .options .option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: calc(100% / 2);
+}
+.options .option:first-child {
+  pointer-events: none;
+}
+.options .option:first-child input {
+  opacity: 0.7;
+}
+.options .option input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.options .option label {
+  padding-left: 0.5rem;
+  cursor: pointer;
+}
+.wrapper .generate-btn {
+  width: 100%;
+  padding: 15px 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  background-color: #1bbc00;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.wrapper .generate-btn:hover {
+  background-color: #148900;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 15px 0;
+  font-family: Monospace;
+  font-size: .8em;
+  color: #aaa;
+}
+.home {
+  margin-right: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+span a:link {
+  color: #999;
+}
+
+span a:visited {
+  color: #999;
+}
+
+.project-link:link {
+  color: #1bbc00;
+  opacity: 1;
+}
+
+.project-link:hover {
+  color: #129f2d;
+}
+
+.project-link:visited {
+  color: #1bbc00;
+}
+
+a:link {
+  color: #aaa;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
