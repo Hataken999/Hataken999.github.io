@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Tadinya untuk latihan adek ane belajar perhitungan dasar, tapi sayang kalau di simpen sendiri aje xD">
+  <title>Latihan Perhitungan Dasar | Hataken Project (iseng)</title>
+
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: brown;
+      min-height: 100vh;
+    }
+    .wrapper {
+      width: min(100% - 2em, 450px);
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: white;
+      border-radius: 6px;
+    }
+    .wrapper h3 {
+      margin-bottom: 4px;
+    }
+    .extra {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .wrapper h6 {
+      font-weight: 500;
+      color: #bbb;
+    }
+    .wrapper .content {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #eee;
+      padding: 4px;
+      height: 50%;
+      border-radius: 4px;
+    }
+    .pertanyaan {
+      font-size: 30px;
+    }
+    .wrapper .jwb {
+      height: 30px;
+      margin: 15px auto 15px auto;
+    }
+    .jawaban {
+      font-size: .9rem;
+    }
+    .btn {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .btn button {
+      width: calc(100% / 2 - 4px);
+      height: 45px;
+      padding: 2px 8px;
+      border: none;
+      background-color: brown;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+    .extra button {
+      padding: 4px 6px;
+      color: white;
+      font-size: .5rem;
+      background-color: brown;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .btn button:hover, .extra button:hover {
+      background-color: #802323;
+    }
+    .custom-alert {
+      display: flex;
+      position: fixed;
+      width: max(100% / 2 - 20px, 300px);
+      height: 50px;
+      justify-content: space-between;
+      align-items: center;
+      top: 4px;
+      right: -100%;
+      z-index: 5;
+      background-color: #ff9898;
+      border-radius: 2px;
+      color: #d12d2d;
+      opacity: 0;
+      transition: all 1s ease;
+    }
+    .custom-alert.show {
+      right: 6px;
+      opacity: 1;
+    }
+    .icon-alert {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+    }
+    .icon-alert span {
+      font-size: 2rem;
+    }
+    .description-alert {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+      border-left: 2px solid #d12d2d;
+    }
+    .description-alert p {
+      margin: 0 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-alert">
+    <div class="icon-alert">
+      <span>❗️</span>
+    </div>
+    <div class="description-alert">
+      <p></p>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="title">
+      <h3>Latihan Perhitungan Dasar</h3>
+      <div class="extra">
+        <h6>Yang salah dijewer</h6>
+        <button>Ganti Metode</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <p class="pertanyaan"></p>
+    </div>
+
+    <div class="jwb">
+      <p class="jawaban"></p>
+    </div>
+
+    <div class="btn">
+      <button class="tanyaBtn">Acak Bilangan</button>
+      <button class="jwbBtn">Lihat Jawaban</button>
+    </div>
+  </div>
+
+  <script src="fatih.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
