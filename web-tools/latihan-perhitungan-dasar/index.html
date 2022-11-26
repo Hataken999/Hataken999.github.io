@@ -93,9 +93,9 @@
     .custom-alert {
       display: flex;
       position: fixed;
-      width: max(100% / 2 - 20px, 300px);
+      width: max(100% / 4, 300px);
       height: 50px;
-      justify-content: space-between;
+      justify-content: space-evenly;
       align-items: center;
       top: 4px;
       right: -100%;
@@ -129,6 +129,7 @@
     }
     .description-alert p {
       margin: 0 6px;
+      font-size: clamp(.8rem, 100% - 1rem, 1.5rem);
     }
   </style>
 </head>
