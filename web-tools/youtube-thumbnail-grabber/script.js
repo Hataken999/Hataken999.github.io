@@ -70,8 +70,9 @@ downloadBtn.addEventListener("click", e => {
 e.preventDefault();
 
   downloadBtn.innerText = "Downloading...";
-  downloadBtn.style.cursor = "not-allowed";
+  downloadBtn.style.cursor = "progress";
   downloadBtn.style.pointerEvents = "none";
+  downloadBtn.disabled = true;
 
 /*const headers = headers = {
   'Origin': 'https://img.youtube.com',
@@ -119,6 +120,7 @@ headers.set('Origin', 'https://img.youtube.com');*/
       downloadBtn.innerText = "Download Thumbnail";
       downloadBtn.style.cursor = "pointer";
       downloadBtn.style.pointerEvents = "auto";
+      downloadBtn.disabled = false;
       notyf.success('Berhasil mengunduh thumbnail');
     }).catch( e => {
       console.log(e);
