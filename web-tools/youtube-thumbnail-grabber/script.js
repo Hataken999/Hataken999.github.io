@@ -4,6 +4,7 @@ thumbResolution = document.querySelector(".select-menu select"),
 grabBtn = document.querySelector(".grab-btn"),
 downloadBtn = document.querySelector(".download-btn"),
 preview = document.querySelector(".preview");
+const thumbImg = document.getElementById("thumb-img");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
 let online = navigator.onLine;
@@ -58,8 +59,6 @@ e.preventDefault();
 }
 
 console.log("Video ID:", videoId);
-  const thumbImg = document.getElementById("thumb-img");
-
   if (videoId) {
     thumbnailUrl =  thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
     thumbImg.src = thumbnailUrl;
