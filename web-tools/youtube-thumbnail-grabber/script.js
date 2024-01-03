@@ -7,7 +7,7 @@ preview = document.querySelector(".preview");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
 let online = navigator.onLine;
-const corsProxy = "us.pylex.me:8232/";
+const corsProxy = "http://us.pylex.me:8232/";
 
 videoUrl.addEventListener("focus", () => {
   if (videoUrl.value) {
