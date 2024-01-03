@@ -93,7 +93,7 @@ headers.set('Origin', 'https://img.youtube.com');*/
   },
 }*/
 
-  let cors = corsProxy + thumbnailUrl
+  /*let cors = corsProxy + thumbnailUrl
   const thumbRequest = new Request(cors, {
   mode: 'cors', // Menentukan bahwa permintaan ini merupakan CORS
   headers: new Headers({
@@ -120,7 +120,33 @@ headers.set('Origin', 'https://img.youtube.com');*/
       notyf.succes('Berhasil mengunduh thumbnail');
     }).catch( e => {
       notyf.error('Gagal mengunduh thumbnail, laporin aja cuy..');
-});
+    });*/
+
+  const canvas = document.createElement("canvas");
+  canvas.width = thumbImg.width;
+  canvas.height = thumbImg.height;
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(thumbImg, 0, 0, canvas.width, canvas.height);
+
+  // Dapatkan data URL gambar dari canvas
+  const imageDataUrl = canvas.toDataURL("image/jpg");
+
+  // Hapus elemen canvas setelah digunakan
+  document.body.removeChild(canvas);
+
+  // Sekarang Anda dapat menggunakan imageDataUrl sesuai kebutuhan Anda
+  const link = document.createElement("a");
+  link.href = imageDataUrl;
+
+  if (thumbName.value) {
+    link.download = `${thumbName.value} - Hataken Project`;
+  } else {
+    link.download = `${thumbResolution.value} - Hataken Project`;
+  }
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  notyf.success('Berhasil mengunduh thumbnail');
 
 })
 
