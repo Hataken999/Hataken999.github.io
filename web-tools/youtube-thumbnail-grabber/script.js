@@ -61,6 +61,7 @@ e.preventDefault();
 console.log("Video ID:", videoId);
   if (videoId) {
     thumbnailUrl =  thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
+    thumbImg.crossOrigin = "anonymous";
     thumbImg.src = thumbnailUrl;
     grabBtn.innerText = "Grabbing Thumbnail...";
     thumbImg.addEventListener("load", () => {
