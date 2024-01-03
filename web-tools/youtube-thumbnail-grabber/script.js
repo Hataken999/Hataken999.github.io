@@ -70,8 +70,6 @@ downloadBtn.addEventListener("click", e => {
 e.preventDefault();
 
   downloadBtn.innerText = "Downloading...";
-  downloadBtn.style.cursor = "not-allowed";
-  downloadBtn.style.pointerEvents = "none";
   downloadBtn.disabled = true;
 
 /*const headers = headers = {
@@ -109,17 +107,15 @@ headers.set('Origin', 'https://img.youtube.com');*/
       link.href = objectURL;
   
       if (thumbName.value) {
-        link.download = `${thumbName.value} - Hataken Project`;
+        link.download = `${thumbName.value}_${thumbResolution.value} - Hataken Project`;
       } else {
-        link.download = `${thumbResolution.value} - Hataken Project`;
+        link.download = `${videoId}_${thumbResolution.value} - Hataken Project`;
       }
       document.body.appendChild(link);
       link.click();
       URL.revokeObjectURL(objectURL);
       link.remove();
       downloadBtn.innerText = "Download Thumbnail";
-      downloadBtn.style.cursor = "pointer";
-      downloadBtn.style.pointerEvents = "auto";
       downloadBtn.disabled = false;
       notyf.success('Berhasil mengunduh thumbnail');
     }).catch( e => {
