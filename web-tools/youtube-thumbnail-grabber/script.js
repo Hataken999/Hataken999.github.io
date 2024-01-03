@@ -7,9 +7,9 @@ preview = document.querySelector(".preview");
 const thumbImg = document.getElementById("thumb-img");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
-let online = navigator.onLine;
-const corsProxy = "http://us.pylex.me:8232/";
-const notyf = new Notyf({duration: 5_000});
+let online = Navigator.onLine;
+const corsProxy = "http://proxy.hataken.eu.org:8232/?url=";
+const notyf = new Notyf({duration: 5_000, position: {y: 'top'}, dismissible: true});
 
 videoUrl.addEventListener("focus", () => {
   if (videoUrl.value) {
@@ -37,7 +37,7 @@ grabBtn.addEventListener("click", e => {
 e.preventDefault();
 
   if (!online) {
-    alert("Kamu sedang offline, tunggu sampai online lagi untuk menggunakan tools ini.");
+    notyf.error("Kamu sedang offline, tunggu sampai online lagi untuk menggunakan tools ini.");
     return;
   }
   
@@ -92,18 +92,14 @@ headers.set('Origin', 'https://img.youtube.com');*/
   },
 }*/
 
-  /*let cors = corsProxy + thumbnailUrl
-  const thumbRequest = new Request(cors, {
-  mode: 'cors', // Menentukan bahwa permintaan ini merupakan CORS
-  headers: new Headers({
-    'Origin': 'https://hataken999.github.io', // Ganti dengan origin halaman Anda
-  }),
-});
+  let cors = corsProxy + thumbnailUrl
+  const thumbRequest = new Request(cors);
 
   fetch(thumbRequest)
-  .then((response) => response.blob())
-    .then((myBlob) => {
-      const objectURL = URL.createObjectURL(myBlob),
+  .then((response) => response.json())
+    .then((data) => {
+      const blob = base64ToBlob(data.result, 'image/jpeg);
+      const objectURL = URL.createObjectURL(blob),
       link = document.createElement("a");
       link.href = objectURL;
   
@@ -119,9 +115,9 @@ headers.set('Origin', 'https://img.youtube.com');*/
       notyf.succes('Berhasil mengunduh thumbnail');
     }).catch( e => {
       notyf.error('Gagal mengunduh thumbnail, laporin aja cuy..');
-    });*/
+    });
 
-  const canvas = document.createElement("canvas");
+  /*const canvas = document.createElement("canvas");
   canvas.width = thumbImg.width;
   canvas.height = thumbImg.height;
   const ctx = canvas.getContext("2d");
@@ -145,7 +141,7 @@ headers.set('Origin', 'https://img.youtube.com');*/
   document.body.appendChild(link);
   link.click();
   link.remove();
-  notyf.success('Berhasil mengunduh thumbnail');
+  notyf.success('Berhasil mengunduh thumbnail');*/
 
 })
 
@@ -156,7 +152,7 @@ function imgError() {
 
 function connection() {
   if (!online) {
-    alert("Kamu sedang offline, tunggu sampai online lagi untuk menggunakan tools ini.");
+    notyf.error("Kamu sedang offline, tunggu sampai online lagi untuk menggunakan tools ini.");
     return;
   }
 }
@@ -164,3 +160,7 @@ function connection() {
 online.addEventListener("change", () => {
   connection();
 });
+
+addEventListener("offline", () => {
+  connection();
+})
