@@ -98,7 +98,7 @@ headers.set('Origin', 'https://img.youtube.com');*/
   fetch(thumbRequest)
   .then((response) => response.json())
     .then((data) => {
-      const blob = base64ToBlob(data.result, 'image/jpeg);
+      const blob = base64ToBlob(data.result, 'image/jpeg');
       const objectURL = URL.createObjectURL(blob),
       link = document.createElement("a");
       link.href = objectURL;
