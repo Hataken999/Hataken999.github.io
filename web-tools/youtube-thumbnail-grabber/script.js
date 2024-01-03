@@ -7,7 +7,6 @@ preview = document.querySelector(".preview");
 const thumbImg = document.getElementById("thumb-img");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
-let online = Navigator.onLine;
 const corsProxy = "http://proxy.hataken.eu.org:8232/?url=";
 const notyf = new Notyf({duration: 5_000, position: {y: 'top'}, dismissible: true});
 
@@ -35,11 +34,6 @@ videoUrl.addEventListener("keyup", () => {
 
 grabBtn.addEventListener("click", e => {
 e.preventDefault();
-
-  if (!online) {
-    notyf.error("Kamu sedang offline, tunggu sampai online lagi untuk menggunakan tools ini.");
-    return;
-  }
   
  if (videoUrl.value.includes("youtu.be")) {
   // Handle youtu.be URLs
@@ -156,7 +150,3 @@ function connection() {
     return;
   }
 }
-
-addEventListener("offline", () => {
-  connection();
-});
