@@ -157,6 +157,6 @@ function connection() {
   }
 }
 
-online.addEventListener("change", () => {
+addEventListener("offline", () => {
   connection();
 });
