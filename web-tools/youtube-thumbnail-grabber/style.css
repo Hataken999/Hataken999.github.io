@@ -17,8 +17,8 @@ body {
   min-height: 100vh;
 }
 
-canvas {
-  display: 'hidden';
+button:disabled {
+  cursor: "not-allowed";
 }
 
 .wrapper {
