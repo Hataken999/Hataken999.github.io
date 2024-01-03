@@ -39,17 +39,24 @@ e.preventDefault();
     return;
   }
   
-  if (!videoUrl.value.includes("music.youtube.com") && videoUrl.value.includes("youtu.be")) {
-    videoId = videoUrl.value.split("/")[3];
-  } else if(videoUrl.value.includes("music.youtube")) {
-    videoId = videoUrl.value.split(/[=&]+/)[1];
-  } else if(videoUrl.value.includes("youtube.com")) {
-    videoId = videoUrl.value.split(/[/?]/)[4];
-    //console.log(videoId);
-  } else {
-    imgError();
-    return;
-  }
+ if (videoUrl.value.includes("youtu.be")) {
+  // Handle youtu.be URLs
+  videoId = videoUrl.value.split("/")[3].split('?')[0];
+} else if (videoUrl.value.includes("music.youtube.com")) {
+  // Handle music.youtube.com URLs
+  const params = new URLSearchParams(videoUrl.value.split('?')[1]);
+  videoId = params.get('v');
+} else if (videoUrl.value.includes("youtube.com")) {
+  // Handle youtube.com URLs
+  const urlParams = new URLSearchParams(videoUrl.value.split('?')[1]);
+  videoId = urlParams.get('v') || videoUrl.value.split(/[/?]/)[4];
+} else {
+  // Handle other cases or display an error
+  imgError();
+  return;
+}
+
+console.log("Video ID:", videoId);
   const thumbImg = document.getElementById("thumb-img");
 
   if (videoId) {
