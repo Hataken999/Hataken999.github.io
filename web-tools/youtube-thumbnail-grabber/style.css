@@ -17,6 +17,10 @@ body {
   min-height: 100vh;
 }
 
+canvas {
+  display: 'hidden';
+}
+
 .wrapper {
   width: min(100% - 2em,550px);
   border-radius: 7px;
