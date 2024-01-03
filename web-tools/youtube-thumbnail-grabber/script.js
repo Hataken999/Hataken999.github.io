@@ -71,7 +71,7 @@ e.preventDefault();
 
   downloadBtn.innerText = "Downloading...";
   downloadBtn.style.cursor = "progress";
-  downloadBtn.style.pointerEvents = "none";
+  downloadBtn.style.pointerEvents = "auto";
   downloadBtn.disabled = true;
 
 /*const headers = headers = {
