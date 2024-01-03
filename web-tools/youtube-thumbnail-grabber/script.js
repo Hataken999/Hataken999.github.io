@@ -8,6 +8,7 @@ let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
 let online = navigator.onLine;
 const corsProxy = "http://us.pylex.me:8232/";
+const notyf = new Notyf({duration: 5_000});
 
 videoUrl.addEventListener("focus", () => {
   if (videoUrl.value) {
@@ -93,7 +94,12 @@ headers.set('Origin', 'https://img.youtube.com');*/
 }*/
 
   let cors = corsProxy + thumbnailUrl
-  const thumbRequest = new Request(cors);
+  const thumbRequest = new Request(cors, {
+  mode: 'cors', // Menentukan bahwa permintaan ini merupakan CORS
+  headers: new Headers({
+    'Origin': 'https://hataken999.github.io', // Ganti dengan origin halaman Anda
+  }),
+});
 
   fetch(thumbRequest)
   .then((response) => response.blob())
@@ -111,14 +117,16 @@ headers.set('Origin', 'https://img.youtube.com');*/
       link.click();
       URL.revokeObjectURL(objectURL);
       link.remove();
+      notyf.succes('Berhasil mengunduh thumbnail');
     }).catch( e => {
-alert(e + "<br>Download masih diblock oleh <b><i>CORS Policy</i></b>, coba dengan klik kanan gambar atau sentuh tahan gambar lalu simpan gambar secara manual.");
+      notyf.error('Gagal mengunduh thumbnail, laporin aja cuy..');
 });
 
 })
 
 function imgError() {
-  alert("Gagal mengambil thumbnail! Coba cek URL yang diinput valid atau tidak.");
+  notyf.error('Gagal mengambil thumbnail! Coba cek URL yang diinput valid atau tidak.');
+  // alert("Gagal mengambil thumbnail! Coba cek URL yang diinput valid atau tidak.");
 }
 
 function connection() {
