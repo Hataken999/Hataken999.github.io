@@ -114,6 +114,7 @@ headers.set('Origin', 'https://img.youtube.com');*/
       link.remove();
       notyf.succes('Berhasil mengunduh thumbnail');
     }).catch( e => {
+      console.log(e);
       notyf.error('Gagal mengunduh thumbnail, laporin aja cuy..');
     });
 
@@ -144,6 +145,26 @@ headers.set('Origin', 'https://img.youtube.com');*/
   notyf.success('Berhasil mengunduh thumbnail');*/
 
 })
+
+function base64ToBlob(base64String, contentType = 'application/octet-stream') {
+  const byteCharacters = atob(base64String);
+  const byteArrays = [];
+
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const slice = byteCharacters.slice(offset, offset + 512);
+
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+
+  return new Blob(byteArrays, { type: contentType });
+}
+
 
 function imgError() {
   notyf.error('Gagal mengambil thumbnail! Coba cek URL yang diinput valid atau tidak.');
