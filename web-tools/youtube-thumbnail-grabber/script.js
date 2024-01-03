@@ -69,6 +69,10 @@ console.log("Video ID:", videoId);
 downloadBtn.addEventListener("click", e => {
 e.preventDefault();
 
+  downloadBtn.innerText = "Downloading...";
+  downloadBtn.style.cursor = "not-allowed";
+  downloadBtn.style.pointerEvents = "none";
+
 /*const headers = headers = {
   'Origin': 'https://img.youtube.com',
   'Content-Type': 'image/jpg',
@@ -112,7 +116,10 @@ headers.set('Origin', 'https://img.youtube.com');*/
       link.click();
       URL.revokeObjectURL(objectURL);
       link.remove();
-      notyf.succes('Berhasil mengunduh thumbnail');
+      downloadBtn.innerText = "Download Thumbnail";
+      downloadBtn.style.cursor = "pointer";
+      downloadBtn.style.pointerEvents = "auto";
+      notyf.success('Berhasil mengunduh thumbnail');
     }).catch( e => {
       console.log(e);
       notyf.error('Gagal mengunduh thumbnail, laporin aja cuy..');
