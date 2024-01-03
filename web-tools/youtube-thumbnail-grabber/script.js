@@ -7,7 +7,7 @@ preview = document.querySelector(".preview");
 const thumbImg = document.getElementById("thumb-img");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
-const corsProxy = "http://proxy.hataken.eu.org:8232/?url=";
+const corsProxy = "https://bots.hataken.eu.org/api/download/ytt";
 const notyf = new Notyf({duration: 5_000, position: {y: 'top'}, dismissible: true});
 
 videoUrl.addEventListener("focus", () => {
@@ -86,8 +86,14 @@ headers.set('Origin', 'https://img.youtube.com');*/
   },
 }*/
 
-  let cors = corsProxy + thumbnailUrl
-  const thumbRequest = new Request(cors);
+  let cors = corsProxy;
+  const thumbRequest = new Request(cors, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ url: thumbnailUrl })
+});
 
   fetch(thumbRequest)
   .then((response) => response.json())
