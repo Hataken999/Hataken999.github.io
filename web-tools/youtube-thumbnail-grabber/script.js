@@ -61,7 +61,6 @@ e.preventDefault();
 console.log("Video ID:", videoId);
   if (videoId) {
     thumbnailUrl =  thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
-    thumbImg.crossOrigin = "anonymous";
     thumbImg.src = thumbnailUrl;
     grabBtn.innerText = "Grabbing Thumbnail...";
     thumbImg.addEventListener("load", () => {
@@ -126,7 +125,7 @@ headers.set('Origin', 'https://img.youtube.com');*/
   canvas.width = thumbImg.width;
   canvas.height = thumbImg.height;
   const ctx = canvas.getContext("2d");
-  ctx.drawImage(thumbImg, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(corsProxy + thumbImg, 0, 0, canvas.width, canvas.height);
 
   // Dapatkan data URL gambar dari canvas
   const imageDataUrl = canvas.toDataURL("image/jpg");
