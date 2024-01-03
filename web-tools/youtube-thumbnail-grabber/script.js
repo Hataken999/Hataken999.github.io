@@ -70,8 +70,8 @@ downloadBtn.addEventListener("click", e => {
 e.preventDefault();
 
   downloadBtn.innerText = "Downloading...";
-  downloadBtn.style.cursor = "progress";
-  downloadBtn.style.pointerEvents = "auto";
+  downloadBtn.style.cursor = "not-allowed";
+  downloadBtn.style.pointerEvents = "none";
   downloadBtn.disabled = true;
 
 /*const headers = headers = {
