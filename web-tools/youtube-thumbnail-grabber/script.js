@@ -9,7 +9,7 @@ const thumbImg = document.getElementById("thumb-img");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
 const corsProxy = "https://bots.hataken.eu.org/api/download/ytt";
-const notyf = new Notyf({duration: 5_000, position: {y: 'top'}, dismissible: true});
+const notyf = new Notyf({duration: 5_000, position: {y: 'bottom'}, dismissible: true});
 
 videoUrl.addEventListener("focus", () => {
   if (videoUrl.value) {
