@@ -1,70 +1,105 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=7,8,edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Youtube Thumbnail Grabber - Hataken Project</title>
   <meta name="theme-color" content="#7925c1">
-  <meta name="description" content="This online tool allows you to download thumbnail of YouTube videos, shorts, and YT music with ease." />
+  <meta name="description"
+    content="This online tool allows you to download thumbnail of YouTube videos, shorts, and YT music with ease." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hataken999.github.io/web-tools/youtube-thumbnail-grabber/" />
   <meta property="og:site_name" content="Youtube Thumbnail Grabber" />
   <meta property="og:title" content="Youtube Thumbnail Grabber - Hataken Project" />
-  <meta property="og:description" content="This online tool allows you to download thumbnail of YouTube videos, shorts, and YT music with ease." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/Hataken999/Hataken999.github.io/main/web-tools/youtube-thumbnail-grabber/preview.png" />
+  <meta property="og:description"
+    content="This online tool allows you to download thumbnail of YouTube videos, shorts, and YT music with ease." />
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/Hataken999/Hataken999.github.io/main/web-tools/youtube-thumbnail-grabber/preview.png" />
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="twitter:domain" content="hataken999.github.io" />
   <meta property="twitter:url" content="https://hataken999.github.io/web-tools/youtube-thumbnail-grabber/">
   <meta name="twitter:title" content="Youtube Thumbnail Grabber - Hataken Project" />
-  <meta name="twitter:description" content="This online tool allows you to download thumbnail of YouTube videos, shorts, and YT music with ease.">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/Hataken999/Hataken999.github.io/main/web-tools/youtube-thumbnail-grabber/preview.png">
+  <meta name="twitter:description"
+    content="This online tool allows you to download thumbnail of YouTube videos, shorts, and YT music with ease.">
+  <meta name="twitter:image"
+    content="https://raw.githubusercontent.com/Hataken999/Hataken999.github.io/main/web-tools/youtube-thumbnail-grabber/preview.png">
 
   <meta name="google-site-verification" content="Q9MvQvJ7L9HElVNacvOeeb7k20mHoZAoHX0WJOZhS8k" />
-  
+
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <link rel="stylesheet" href="../lib/css/simple-lightbox.min.css">
   <script src="script.js" type="text/javascript" defer></script>
 </head>
+
 <body>
 
   <div class="wrapper">
     <h3 class="title">Youtube Thumbnail Grabber</h3>
     <p>Masukkan URL youtube video/music/shorts yang ingin didownload thumbnailnya.</p>
     <form action="">
-    <input type="url" placeholder="Enter Youtube video URL here" required>
-    <div class="file-options">
-      <div class="option thumb-name">
-        <label for="thumb-name">File Name</label>
-        <input type="text" name="thumb-name" placeholder="Enter file name" />
-      </div>
-      <div class="option resolution">
-        <label for="resolution">Resolution</label>
-        <div class="select-menu">
-          <select name="resolution">
-            <option value="maxresdefault">Full HD</option>
-            <option value="hqdefault">Medium</option>
-            <option value="mqdefault">Small</option>
-          </select>
+      <input type="url" placeholder="Enter Youtube video URL here" autofocus required>
+      <div class="file-options">
+        <div class="option thumb-name">
+          <label for="thumb-name">File Name <svg id="thumbName" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="feather feather-help-circle">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg></label>
+          <input type="text" name="thumb-name" placeholder="Enter file name" />
+        </div>
+        <div class="option resolution">
+          <label for="resolution">Resolution</label>
+          <div class="select-menu">
+            <select name="resolution" required>
+              <option value="maxresdefault">HD (1280x720)</option>
+              <option value="sddefault">SD (640x480)</option>
+              <option value="hqdefault">HQ (480x360)</option>
+              <option value="mqdefault">MQ (320x180)</option>
+              <option value="default">LQ (120x90)</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
-    <button class="grab-btn">Grab</button>
-    <div class="preview">
-      <h3>Preview</h3>
-        <div class="thumb-img">
-          <img id="thumb-img" src="" alt="Preview Thumbnail">
+      <button class="grab-btn" disabled>Grab</button>
+      <div class="preview-wrapper">
+        <div>
+          <div class="preview">
+            <div class="preview-header">
+              <h3>Preview</h3>
+              <svg id="previewHelp" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-help-circle">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <div class="thumb-img">
+              <a href="" class="big"><img id="thumb-img" src="" alt="Preview Thumbnail"></a>
+            </div>
+            <button class="download-btn">Download Thumbnail</button>
+          </div>
         </div>
-        <button class="download-btn">Download Thumbnail</button>
       </div>
-    <div class="footer">
-      <a class="project-link" href="github.com/Hataken999" target="_blank">Hataken Project</a> • Made with &hearts;
-    </div>
+      <div class="footer">
+        <a class="project-link" href="https://hataken.eu.org" target="_blank">Hataken Project</a> • Made with &hearts;
+      </div>
     </form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+  <!-- Library -->
+  <script src="../lib/js/popper.min.js"></script>
+  <script src="../lib/js/tippy-bundle.umd.min.js"></script>
+  <script src="../lib/js/simple-lightbox.min.js"></script>
 </body>
+
 </html>
