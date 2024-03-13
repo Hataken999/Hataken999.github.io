@@ -1,16 +1,16 @@
 const videoUrl = document.querySelector(".wrapper input"),
-thumbName = document.querySelector(".thumb-name input"),
-thumbResolution = document.querySelector(".select-menu select"),
-grabBtn = document.querySelector(".grab-btn"),
-downloadBtn = document.querySelector(".download-btn"),
-preview = document.querySelector(".preview-wrapper"),
-formEl = document.querySelector("form"),
-thumbAnchor = document.querySelector('.thumb-img a');
+  thumbName = document.querySelector(".thumb-name input"),
+  thumbResolution = document.querySelector(".select-menu select"),
+  grabBtn = document.querySelector(".grab-btn"),
+  downloadBtn = document.querySelector(".download-btn"),
+  preview = document.querySelector(".preview-wrapper"),
+  formEl = document.querySelector("form"),
+  thumbAnchor = document.querySelector('.thumb-img a');
 const thumbImg = document.getElementById("thumb-img");
 let videoId, thumbnailUrl;
 let thumbnailBaseUrl = "https://img.youtube.com/vi/";
-const corsProxy = "https://bots.hataken.eu.org/api/download/ytt";
-const notyf = new Notyf({duration: 5_000, position: {y: 'bottom'}, dismissible: true});
+const corsProxy = "https://mweb-proxy-semihofc.netlify.app/?destination=";
+const notyf = new Notyf({ duration: 5_000, position: { y: 'bottom' }, dismissible: true });
 const $gallery = new SimpleLightbox(thumbAnchor, {});
 
 tippy('#thumbName', {
@@ -45,9 +45,9 @@ videoUrl.addEventListener("keyup", () => {
 })
 
 grabBtn.addEventListener("click", e => {
-e.preventDefault();
-  
-grabThumb();
+  e.preventDefault();
+
+  grabThumb();
 })
 
 thumbResolution.addEventListener('change', () => {
@@ -55,51 +55,44 @@ thumbResolution.addEventListener('change', () => {
 })
 
 downloadBtn.addEventListener("click", e => {
-e.preventDefault();
+  e.preventDefault();
 
   downloadBtn.innerText = "Downloading...";
   downloadBtn.disabled = true;
   downloadBtn.classList.add('disabled');
 
-/*const headers = headers = {
-  'Origin': 'https://img.youtube.com',
-  'Content-Type': 'image/jpg',
-}*/
-/*headers.append('Content-Type', 'image/jpg');
-headers.set('Accept', 'image/jpg');
-headers.set('Origin', 'https://img.youtube.com');*/
+  /*const headers = headers = {
+    'Origin': 'https://img.youtube.com',
+    'Content-Type': 'image/jpg',
+  }*/
+  /*headers.append('Content-Type', 'image/jpg');
+  headers.set('Accept', 'image/jpg');
+  headers.set('Origin', 'https://img.youtube.com');*/
 
-/*const thumbInit = {
-  method: 'GET',
-  headers: {
-  'Origin': 'https://img.youtube.com',
-  'Content-Type': 'image/jpg',
-    
-  },
-}*/
+  /*const thumbInit = {
+    method: 'GET',
+    headers: {
+    'Origin': 'https://img.youtube.com',
+    'Content-Type': 'image/jpg',
+      
+    },
+  }*/
 
-  let cors = corsProxy;
-  const thumbRequest = new Request(cors, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ url: thumbnailUrl })
-});
+  let cors = corsProxy + thumbnailUrl;
 
-  fetch(thumbRequest)
-  .then((response) => response.json())
+  fetch(cors)
+    .then((response) => response.blob())
     .then((data) => {
-      const blob = base64ToBlob(data.result, 'image/jpeg');
-      const objectURL = URL.createObjectURL(blob),
-      link = document.createElement("a");
+      const objectURL = URL.createObjectURL(data),
+        link = document.createElement("a");
       link.href = objectURL;
-  
+
       if (thumbName.value) {
         link.download = `${thumbName.value}_${thumbResolution.value} - Hataken Project`;
       } else {
         link.download = `${videoId}_${thumbResolution.value} - Hataken Project`;
       }
+
       document.body.appendChild(link);
       link.click();
       URL.revokeObjectURL(objectURL);
@@ -108,7 +101,7 @@ headers.set('Origin', 'https://img.youtube.com');*/
       downloadBtn.disabled = false;
       downloadBtn.classList.remove('disabled');
       notyf.success('Berhasil mengunduh thumbnail');
-    }).catch( e => {
+    }).catch(e => {
       console.log(e);
       downloadBtn.innerText = "Download Thumbnail";
       downloadBtn.disabled = false;
@@ -164,27 +157,27 @@ function grabThumb(isError = true) {
     if (isError) imgError();
     return;
   }
-  
+
   console.log("Video ID:", videoId);
-    if (videoId) {
-      thumbnailUrl =  thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
-      thumbAnchor.href = thumbnailUrl;
-      thumbImg.src = thumbnailUrl;
-      grabBtn.innerText = "Grabbing Thumbnail...";
-      grabBtn.disabled = true;
-      grabBtn.classList.add('disabled');
-      thumbImg.addEventListener("load", () => {
-        grabBtn.innerText = "Grab";
-        grabBtn.disabled = false;
-        grabBtn.classList.remove('disabled');
-        preview.classList.add("show");
-        tippy('#previewHelp', {
-          content: "Jika gambar thumbnail menampilkan thumbnail placeholder youtube (yang berwarna abu-abu), maka coba ganti resolusinya satu-persatu.",
-          placement: 'auto',
-          arrow: true
-        });
-      })
-    } else {
-      imgError();
-    }
+  if (videoId) {
+    thumbnailUrl = thumbnailBaseUrl + videoId + "/" + thumbResolution.value + ".jpg";
+    thumbAnchor.href = thumbnailUrl;
+    thumbImg.src = thumbnailUrl;
+    grabBtn.innerText = "Grabbing Thumbnail...";
+    grabBtn.disabled = true;
+    grabBtn.classList.add('disabled');
+    thumbImg.addEventListener("load", () => {
+      grabBtn.innerText = "Grab";
+      grabBtn.disabled = false;
+      grabBtn.classList.remove('disabled');
+      preview.classList.add("show");
+      tippy('#previewHelp', {
+        content: "Jika gambar thumbnail menampilkan thumbnail placeholder youtube (yang berwarna abu-abu), maka coba ganti resolusinya satu-persatu.",
+        placement: 'auto',
+        arrow: true
+      });
+    })
+  } else {
+    imgError();
+  }
 }
